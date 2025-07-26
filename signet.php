@@ -4,7 +4,7 @@
  *
  * @package   Signet
  * @author    imath
- * @license   GPL-2.0+
+ * @license   MIT
  * @link      https://imathi.eu
  *
  * @retraceur-block
