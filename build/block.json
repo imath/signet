@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/retraceur/ressources/refs/heads/main/schemas/block.json",
+  "apiVersion": 3,
+  "name": "imath/signet",
+  "title": "Signet",
+  "category": "embed",
+  "icon": "admin-links",
+  "description": "Format bookmarks using a rich representation of the corresponding linked Web pages.",
+  "keywords": [
+    "Retraceur",
+    "link",
+    "bookmark",
+    "embed"
+  ],
+  "textdomain": "signet",
+  "version": "1.0.0",
+  "attributes": {
+    "url": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".signet-url",
+      "attribute": "href"
+    },
+    "image": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "src"
+    },
+    "title": {
+      "type": "string",
+      "source": "text",
+      "selector": ".signet-title"
+    },
+    "description": {
+      "type": "string",
+      "source": "text",
+      "selector": ".signet-description"
+    },
+    "align": {
+      "type": "string",
+      "default": "center"
+    }
+  },
+  "supports": {
+    "align": [
+      "left",
+      "right",
+      "center"
+    ],
+    "anchor": true,
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": [
+    "file:./index.css",
+    "wp-block-embed-theme",
+    "wp-block-media-text-theme"
+  ]
+}
