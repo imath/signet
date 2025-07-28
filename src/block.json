@@ -40,11 +40,7 @@
 	"supports": {
 		"align": [ "left", "right", "center" ],
 		"anchor": true,
-		"html": false,
-		"spacing": {
-			"margin": true,
-			"padding": true
-		}
+		"html": false
 	},
 	"editorScript": "file:./index.js",
 	"style": ["file:./index.css", "wp-block-embed-theme"]
