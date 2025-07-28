@@ -1,0 +1,19 @@
+/**
+ * WP dependencies.
+ */
+import { registerBlockType } from '@wordpress/blocks';
+
+/**
+ * Internal dependencies.
+ */
+import './index.scss';
+import metadata from './block.json';
+import { ReactComponent as IconSignet } from './assets/icon.svg';
+import EditSignet from './inc/edit';
+import SaveSignet from './inc/save';
+
+registerBlockType( metadata, {
+	icon: IconSignet,
+	edit: EditSignet,
+	save: SaveSignet,
+} );
