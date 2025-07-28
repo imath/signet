@@ -43,5 +43,5 @@
 		"html": false
 	},
 	"editorScript": "file:./index.js",
-	"style": ["file:./index.css", "wp-block-embed-theme"]
+	"style": ["file:./index.css", "wp-block-embed-theme", "wp-block-media-text"]
 }

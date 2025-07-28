@@ -55,6 +55,6 @@
   "style": [
     "file:./index.css",
     "wp-block-embed-theme",
-    "wp-block-media-text-theme"
+    "wp-block-media-text"
   ]
 }
