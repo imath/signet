@@ -2,19 +2,18 @@
  * WP dependencies.
  */
 import { __experimentalFetchUrlData as fetchUrlData } from '@wordpress/core-data';
-import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import { useEffect, useReducer } from '@wordpress/element';
 
 /**
  * Resolves URL Rich Data.
  *
- * Copy/pasted from Block Editor's link-control.
+ * @since 1.0.0
  *
  * @param {object} state
  * @param {object} action
  * @returns {object}
  */
-function reducer( state, action ) {
+const reducer = ( state, action ) => {
 	switch ( action.type ) {
 		case 'RESOLVED':
 			return {
@@ -41,12 +40,12 @@ function reducer( state, action ) {
 /**
  * Gets URL Rich Data.
  *
- * Adapted from Block Editor's link-control.
+ * @since 1.0.0
  *
- * @param {string} url
+ * @param {string} url The URL to request rich date for.
  * @returns {object}
  */
-function useRichUrlData( url, setAttributes, attributes ) {
+const useRichUrlData = ( url ) => {
 	const [ state, dispatch ] = useReducer( reducer, {
 		richData: null,
 		isFetching: false,
@@ -65,13 +64,6 @@ function useRichUrlData( url, setAttributes, attributes ) {
 			fetchUrlData( url, {
 				signal,
 			} ).then( ( urlData ) => {
-				const { title, image, description } = urlData;
-				setAttributes( {
-					title: !! attributes.title ? stripHTML( attributes.title ) : stripHTML( title ),
-					image: !! attributes.image ?  attributes.image : image,
-					description: !! attributes.description ? stripHTML( attributes.description ) : stripHTML( description ),
-				} );
-
 				dispatch( {
 					type: 'RESOLVED',
 					richData: urlData,
@@ -88,7 +80,7 @@ function useRichUrlData( url, setAttributes, attributes ) {
 				controller.abort();
 			};
 		}
-	}, [ url, setAttributes, attributes ] );
+	}, [ url ] );
 
 	return state;
 }

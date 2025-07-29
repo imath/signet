@@ -8,6 +8,7 @@ import {
 	ExternalLink,
 	Spinner,
 } from '@wordpress/components';
+import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -15,6 +16,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies.
  */
 import { ReactComponent as IconSignet } from '../assets/icon.svg';
+import useRichUrlData from './use-rich-url-data';
 
 /**
  * Generates the edit part of the block.
@@ -32,6 +34,8 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 	const { url, image, title, description } = attributes;
 	const [ link, setURL ] = useState( url );
 	const [ isEditingURL, setIsEditingURL ] = useState( ! url );
+	const { richData, isFetching } = useRichUrlData( url );
+	const hasRichData = richData && Object.keys( richData ).length;
 
 	const onSubmit = ( event ) => {
 		if ( event ) {
@@ -69,13 +73,29 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 		);
 	}
 
+	if ( !! url && ! title ) {
+		if ( isFetching ) {
+			return (
+				<div { ...blockProps }>
+					<div className="wp-block-embed is-loading">
+						<Spinner />
+					</div>
+				</div>
+			);
+		}
+
+		if ( hasRichData ) {
+			setAttributes( richData );
+		}
+	}
+
 	const titleOutput = (
 		<ExternalLink
 			href={ url }
 			className="signet-url"
 		>
 			<span className="signet-title">
-				{ title ? title : __( 'Open link', 'signet' ) }
+				{ title ? stripHTML( title ) : __( 'Open link', 'signet' ) }
 			</span>
 		</ExternalLink>
 	);
@@ -83,21 +103,23 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 	return (
 		<div { ...blockProps }>
 			{ !! image && (
-				<figure className="signet-figure">
-					<a href={ url } target="_blank" rel="noreferrer noopener">
-						<img src={ image } alt="" />
-					</a>
-					<figcaption>
+				<div className="wp-block-media-text is-stacked-on-mobile">
+					<figure className="wp-block-media-text__media signet-figure">
+						<a href={ url } target="_blank" rel="noreferrer noopener">
+							<img src={ image } alt="" />
+						</a>
+					</figure>
+					<div className="wp-block-media-text__content">
 						{ titleOutput }
-						<p className="signet-description">{ description }</p>
-					</figcaption>
-				</figure>
+						<p className="signet-description">{ stripHTML( description ) }</p>
+					</div>
+				</div>
 			) }
 
 			{ ! image && (
 				<div className="signet-figure">
 					{ titleOutput }
-					<p className="signet-description">{ description }</p>
+					<p className="signet-description">{ stripHTML( description ) }</p>
 				</div>
 			) }
 		</div>

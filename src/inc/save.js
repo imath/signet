@@ -3,6 +3,7 @@
  */
 import { useBlockProps } from '@wordpress/block-editor';
 import { ExternalLink } from '@wordpress/components';
+import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -23,7 +24,7 @@ const SaveSignet = ( { attributes } ) => {
 			className="signet-url"
 		>
 			<span className="signet-title">
-				{ title ? title : __( 'Open link', 'signet' ) }
+				{ title ? stripHTML( title ) : __( 'Open link', 'signet' ) }
 			</span>
 		</ExternalLink>
 	);
@@ -35,21 +36,23 @@ const SaveSignet = ( { attributes } ) => {
 	return (
 		<div { ...blockProps }>
 			{ !! image && (
-				<figure className="signet-figure">
-					<a href={ url } target="_blank" rel="noreferrer noopener">
-						<img src={ image } alt="" />
-					</a>
-					<figcaption>
+				<div className="wp-block-media-text is-stacked-on-mobile">
+					<figure className="wp-block-media-text__media signet-figure">
+						<a href={ url } target="_blank" rel="noreferrer noopener">
+							<img src={ image } alt="" />
+						</a>
+					</figure>
+					<div className="wp-block-media-text__content">
 						{ titleOutput }
-						<p className="signet-description">{ description }</p>
-					</figcaption>
-				</figure>
+						<p className="signet-description">{ stripHTML( description ) }</p>
+					</div>
+				</div>
 			) }
 
 			{ ! image && (
 				<div className="signet-figure">
 					{ titleOutput }
-					<p className="signet-description">{ description }</p>
+					<p className="signet-description">{ stripHTML( description ) }</p>
 				</div>
 			) }
 		</div>
