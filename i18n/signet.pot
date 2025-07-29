@@ -1,0 +1,87 @@
+# Copyright (C) 2025 imath
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Signet 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/imath/signet/issues\n"
+"Last-Translator: imath <contact@imathi.eu>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-07-29T14:56:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: signet\n"
+
+#. Plugin Name of the plugin
+#: signet.php
+#: build/index.js:1
+msgid "Signet"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: signet.php
+msgid "https://github.com/imath/signet"
+msgstr ""
+
+#. Description of the plugin
+#: signet.php
+msgid "Format bookmarks using a rich representation of the corresponding linked Web pages."
+msgstr ""
+
+#. Author of the plugin
+#: signet.php
+msgid "imath"
+msgstr ""
+
+#. Author URI of the plugin
+#: signet.php
+msgid "https://imathi.eu"
+msgstr ""
+
+#: build/index.js:1
+msgid "Paste the link URL & hit the Embed button to fetch preview informations."
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert link URL to preview…"
+msgstr ""
+
+#: build/index.js:1
+msgid "Embed"
+msgstr ""
+
+#: build/index.js:1
+msgid "Open link"
+msgstr ""
+
+#: build/block.json
+msgctxt "block title"
+msgid "Signet"
+msgstr ""
+
+#: build/block.json
+msgctxt "block description"
+msgid "Format bookmarks using a rich representation of the corresponding linked Web pages."
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "Retraceur"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "link"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "bookmark"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "embed"
+msgstr ""
