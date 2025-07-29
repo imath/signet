@@ -1,4 +1,11 @@
 /**
+ * The Signet block.
+ *
+ * @author imath.
+ * @since  1.0.0
+ */
+
+/**
  * WP dependencies.
  */
 import { registerBlockType } from '@wordpress/blocks';
@@ -12,6 +19,7 @@ import { ReactComponent as IconSignet } from './assets/icon.svg';
 import EditSignet from './inc/edit';
 import SaveSignet from './inc/save';
 
+// Registers the Signet block.
 registerBlockType( metadata, {
 	icon: IconSignet,
 	edit: EditSignet,

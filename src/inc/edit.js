@@ -16,7 +16,17 @@ import { __ } from '@wordpress/i18n';
  */
 import { ReactComponent as IconSignet } from '../assets/icon.svg';
 
-const EditSignet = ( { attributes, setAttributes, isSelected } ) => {
+/**
+ * Generates the edit part of the block.
+ *
+ * @since 1.0.0
+ *
+ * @param {Object}   props               Properties passed to the function.
+ * @param {Object}   props.attributes    Available block attributes.
+ * @param {Function} props.setAttributes Function that updates individual attributes.
+ * @returns {string} HTML output for editing the block.
+ */
+const EditSignet = ( { attributes, setAttributes } ) => {
 	const blockProps = useBlockProps();
 	const label = __( 'Signet', 'signet' );
 	const { url, image, title, description } = attributes;
