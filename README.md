@@ -6,4 +6,4 @@
 
 ## Description
 
-Signet (which means bookmark in english) is a [Retraceur](https://retraceur.github.io/about/) block generating a rich representation of a linked Web page as the content of the Link Post Format.
+Signet (which means bookmark in english) is a [Retraceur](https://retraceur.github.io/about/) block to format bookmarks using a rich representation of the corresponding linked Web pages.
