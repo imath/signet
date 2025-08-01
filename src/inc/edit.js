@@ -8,6 +8,7 @@ import {
 	ExternalLink,
 	Spinner,
 } from '@wordpress/components';
+import { __experimentalFetchUrlData as fetchUrlData } from '@wordpress/core-data';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -16,7 +17,6 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies.
  */
 import { ReactComponent as IconSignet } from '../assets/icon.svg';
-import useRichUrlData from './use-rich-url-data';
 
 /**
  * Generates the edit part of the block.
@@ -34,8 +34,7 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 	const { url, image, title, description } = attributes;
 	const [ link, setURL ] = useState( url );
 	const [ isEditingURL, setIsEditingURL ] = useState( ! url );
-	const { richData, isFetching } = useRichUrlData( url );
-	const hasRichData = richData && Object.keys( richData ).length;
+	const [ isFetching, setIsFetching ] = useState( false );
 
 	const onSubmit = ( event ) => {
 		if ( event ) {
@@ -43,7 +42,12 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 		}
 
 		setIsEditingURL( false );
+		setIsFetching( true );
 		setAttributes( { url: link } );
+
+		fetchUrlData( link ).then( ( urlData ) => {
+			setAttributes( urlData );
+		} ).then( () => setIsFetching( false ) );
 	};
 
 	if ( isEditingURL ) {
@@ -82,10 +86,6 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 					</div>
 				</div>
 			);
-		}
-
-		if ( hasRichData ) {
-			setAttributes( richData );
 		}
 	}
 
