@@ -38,7 +38,7 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 	const label = __( 'Signet', 'signet' );
 	const { url, image, title, description } = attributes;
 	const [ link, setURL ] = useState( url );
-	const [ isEditingURL, setIsEditingURL ] = useState( ! url );
+	const [ isEditingURL, setIsEditingURL ] = useState( ! url || ! title );
 	const [ isFetching, setIsFetching ] = useState( false );
 
 	const onSubmit = ( event ) => {
