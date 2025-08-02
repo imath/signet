@@ -1,12 +1,17 @@
 /**
  * WP dependencies.
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import {
+	BlockControls,
+	useBlockProps,
+} from '@wordpress/block-editor';
 import {
 	Placeholder,
 	Button,
 	ExternalLink,
 	Spinner,
+	ToolbarGroup,
+	ToolbarButton,
 } from '@wordpress/components';
 import { __experimentalFetchUrlData as fetchUrlData } from '@wordpress/core-data';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
@@ -48,6 +53,24 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 		fetchUrlData( link ).then( ( urlData ) => {
 			setAttributes( urlData );
 		} ).then( () => setIsFetching( false ) );
+	};
+
+	const switchBackToURLInput = ( event ) => {
+		if ( event ) {
+			event.preventDefault();
+		}
+
+		setIsEditingURL( true );
+		setURL( '' );
+		setAttributes(
+			{
+				'url': '',
+				'title': '',
+				'description': '',
+				'image': '',
+				'icon': '',
+			}
+		);
 	};
 
 	if ( isEditingURL ) {
@@ -100,8 +123,25 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 		</ExternalLink>
 	);
 
+	const editToolbar = (
+		<BlockControls>
+			<ToolbarGroup>
+				<ToolbarButton
+					icon="edit"
+					title={ __(
+						'Edit Link URL',
+						'signet'
+					) }
+					onClick={ switchBackToURLInput }
+				/>
+			</ToolbarGroup>
+		</BlockControls>
+	);
+
 	return (
 		<div { ...blockProps }>
+			{ editToolbar }
+
 			{ !! image && (
 				<div className="wp-block-media-text is-stacked-on-mobile">
 					<figure className="wp-block-media-text__media signet-figure">
