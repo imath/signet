@@ -8,7 +8,6 @@ import {
 import {
 	Placeholder,
 	Button,
-	ExternalLink,
 	Spinner,
 	ToolbarGroup,
 	ToolbarButton,
@@ -22,6 +21,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies.
  */
 import { ReactComponent as IconSignet } from '../assets/icon.svg';
+import OpenInNewWindow from './external-link';
 
 /**
  * Generates the edit part of the block.
@@ -112,17 +112,6 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 		}
 	}
 
-	const titleOutput = (
-		<ExternalLink
-			href={ url }
-			className="signet-url"
-		>
-			<span className="signet-title">
-				{ title ? stripHTML( title ) : __( 'Open link', 'signet' ) }
-			</span>
-		</ExternalLink>
-	);
-
 	const editToolbar = (
 		<BlockControls>
 			<ToolbarGroup>
@@ -150,7 +139,10 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 						</a>
 					</figure>
 					<div className="wp-block-media-text__content">
-						{ titleOutput }
+						<OpenInNewWindow
+							title={ title }
+							url={ url }
+						/>
 						<p className="signet-description">{ stripHTML( description ) }</p>
 					</div>
 				</div>
@@ -158,7 +150,10 @@ const EditSignet = ( { attributes, setAttributes } ) => {
 
 			{ ! image && (
 				<div className="signet-figure">
-					{ titleOutput }
+					<OpenInNewWindow
+						title={ title }
+						url={ url }
+					/>
 					<p className="signet-description">{ stripHTML( description ) }</p>
 				</div>
 			) }

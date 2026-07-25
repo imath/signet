@@ -2,9 +2,13 @@
  * WP dependencies.
  */
 import { useBlockProps } from '@wordpress/block-editor';
-import { ExternalLink } from '@wordpress/components';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import { __ } from '@wordpress/i18n';
+
+/**
+ * Internal dependencies.
+ */
+import OpenInNewWindow from './external-link';
 
 /**
  * Generates the block content to be saved.
@@ -18,16 +22,6 @@ import { __ } from '@wordpress/i18n';
 const SaveSignet = ( { attributes } ) => {
 	const blockProps = useBlockProps.save();
 	const { url, image, title, description } = attributes;
-	const titleOutput = (
-		<ExternalLink
-			href={ url }
-			className="signet-url"
-		>
-			<span className="signet-title">
-				{ title ? stripHTML( title ) : __( 'Open link', 'signet' ) }
-			</span>
-		</ExternalLink>
-	);
 
 	if ( ! url ) {
 		return null;
@@ -43,7 +37,10 @@ const SaveSignet = ( { attributes } ) => {
 						</a>
 					</figure>
 					<div className="wp-block-media-text__content">
-						{ titleOutput }
+						<OpenInNewWindow
+							title={ title }
+							url={ url }
+						/>
 						<p className="signet-description">{ stripHTML( description ) }</p>
 					</div>
 				</div>
@@ -51,7 +48,10 @@ const SaveSignet = ( { attributes } ) => {
 
 			{ ! image && (
 				<div className="signet-figure">
-					{ titleOutput }
+					<OpenInNewWindow
+						title={ title }
+						url={ url }
+					/>
 					<p className="signet-description">{ stripHTML( description ) }</p>
 				</div>
 			) }
