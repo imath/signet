@@ -1,6 +1,6 @@
 {
 	"name": "signet",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Format bookmarks using a rich representation of the corresponding linked Web pages.",
 	"scripts": {
 		"build": "wp-scripts build",
