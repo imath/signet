@@ -1,6 +1,16 @@
 /* Signet specific styles */
 .wp-block-imath-signet {
 
+	.components-external-link__icon {
+		display: inline-block;
+		vertical-align: top;
+		color: currentColor;
+
+		svg {
+			fill: currentColor;
+		}
+	}
+
 	.signet-description {
 		font-size: small;
 	}
