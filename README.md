@@ -1,8 +1,9 @@
 # Signet
 
-## Requirement:
+## Requirements:
 
-- [Retraceur](https://retraceur.github.io/) >= 1.0.0
+- [Retraceur](https://retraceur.github.io/) >= 3.2.0
+- PHP 7.4
 
 ## Description
 
