@@ -12,12 +12,12 @@
  * Plugin URI:         https://github.com/imath/signet
  * Plugin Type:        block
  * Description:        Format bookmarks using a rich representation of the corresponding linked Web pages.
- * Version:            1.0.0
+ * Version:            1.1.0
  * Author:             imath
  * Author URI:         https://imathi.eu
- * Requires Retraceur: 1.0.0
- * Up to Retraceur:    2.0.0
- * Requires PHP:       5.6
+ * Requires Retraceur: 3.2.0
+ * Up to Retraceur:    4.0.0
+ * Requires PHP:       7.4
  * Text Domain:        signet
  * License:            MIT License
  * License URI:        https://github.com/imath/signet/blob/trunk/LICENSE.md
