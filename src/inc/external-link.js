@@ -28,7 +28,7 @@ const OpenInNewWindow = ( { title, url } ) => {
 				className="components-external-link__icon wp-exclude-emoji"
 				aria-label={
 					/* translators: accessibility text */
-					__( '(opens in a new tab)' )
+					__( '(opens in a new tab)', 'signet' )
 				}
 			>
 				<IconExternal width="24px" />

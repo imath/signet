@@ -33,7 +33,7 @@ const v2 = {
 					class="components-external-link__icon"
 					aria-label={
 						/* translators: accessibility text */
-						__( '(opens in a new tab)' )
+						__( '(opens in a new tab)', 'signet' )
 					}
 				>
 					{ isRTL() ? '\u2196' : '\u2197' }
